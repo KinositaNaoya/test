@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class playreControl : MonoBehaviour
 {
-    //•Ï”éŒ¾
-    public float movespeed = 3;//ˆÚ“®‘¬“x
-    float leftcoolTime = 0;//ƒN[ƒ‹ƒ^ƒCƒ€(”äŠr—p)
-    float coolTime = 0.7f;//ƒN[ƒ‹ƒ^ƒCƒ€(ŒÅ’è’l)
+    //ï¿½Ïï¿½ï¿½éŒ¾
+    public float movespeed = 3;//ï¿½Ú“ï¿½ï¿½ï¿½ï¿½x
+    float leftcoolTime = 0;//ï¿½Nï¿½[ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½(ï¿½ï¿½rï¿½p)
+    float coolTime = 0.7f;//ï¿½Nï¿½[ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½(ï¿½Å’ï¿½l)
 
     new Rigidbody2D rigidbody2D;
     Animator animator;
 
     void Start()
     {
-        //ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìæ“¾
+        //ï¿½Rï¿½ï¿½ï¿½|ï¿½[ï¿½lï¿½ï¿½ï¿½gï¿½Ìæ“¾
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -34,22 +34,22 @@ public class playreControl : MonoBehaviour
         }
     }
 
-    private void MoveUpdeta()//ƒLƒƒƒ‰ƒNƒ^[‚ÌˆÚ“®ŠÖ”
+    private void MoveUpdeta()//ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½ÌˆÚ“ï¿½ï¿½Öï¿½
     {
-        //ƒL[“ü—Í(“ü—Í‚ª‚ ‚Á‚½ê‡ƒ{ƒfƒB[‚ÉŒÅ’è‚Ìvelosity‚ğ‘ã“ü‚µ‘±‚¯‚Ä‚¢‚éB)
+        //ï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½{ï¿½fï¿½Bï¿½[ï¿½ÉŒÅ’ï¿½ï¿½velosityï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½B)
         if (Input.GetKey(KeyCode.D))
         {
             
             transform.localScale = new Vector3(-1,1,1);
-            rigidbody2D.velocity = new Vector2(1 * movespeed, rigidbody2D.velocity.y);
+            rigidbody2D.linearVelocity = new Vector2(1 * movespeed, rigidbody2D.linearVelocity.y);
         }
         else if (Input.GetKey(KeyCode.A))
         {
             transform.localScale = new Vector3(1, 1, 1);
-            rigidbody2D.velocity = new Vector2(-1 * movespeed, rigidbody2D.velocity.y);
+            rigidbody2D.linearVelocity = new Vector2(-1 * movespeed, rigidbody2D.linearVelocity.y);
         }
 
-        //ƒAƒjƒ[ƒVƒ‡ƒ“(GetKey‚Ìbool‚ğif‚Å“Ç‚İæ‚Á‚Ä‚¢‚éB)
+        //ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½(GetKeyï¿½ï¿½boolï¿½ï¿½ifï¿½Å“Ç‚İï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½B)
         if(Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A)==true) 
         {
             animator.SetBool("Rum", true); 
@@ -57,28 +57,28 @@ public class playreControl : MonoBehaviour
         {
             animator.SetBool("Rum", false);
 
-            //‚±‚ê‚ª‚È‚¢‚ÆŠŠ‚Á‚Ä‚¢‚­
-            rigidbody2D.velocity = new Vector2(0,rigidbody2D.velocity.y) ;
+            //ï¿½ï¿½ï¿½ê‚ªï¿½È‚ï¿½ï¿½ÆŠï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
+            rigidbody2D.linearVelocity = new Vector2(0,rigidbody2D.linearVelocity.y) ;
         }
         
 
     }
 
-    private void JumpUpdeta()//ƒLƒƒƒ‰ƒNƒ^[‚ÌƒWƒƒƒ“ƒvŠÖ”
+    private void JumpUpdeta()//ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½ÌƒWï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Öï¿½
     {
         if(Input.GetKeyDown(KeyCode.Space)) 
         {
             float jumpPower = 6.0f;
 
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpPower);
+            rigidbody2D.linearVelocity = new Vector2(rigidbody2D.linearVelocity.x, jumpPower);
         }
     }
 
-    private void AttackUpdeta()//ƒLƒƒƒ‰ƒNƒ^[‚ÌUŒ‚ŠÖ”
+    private void AttackUpdeta()//ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½ÌUï¿½ï¿½ï¿½Öï¿½
     {
             if (Input.GetMouseButton(0))
             {
-                rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
+                rigidbody2D.linearVelocity = new Vector2(0, rigidbody2D.linearVelocity.y);
                 animator.SetBool("Rum", false);
                 animator.SetTrigger("Attack");
                 leftcoolTime = coolTime;
@@ -93,11 +93,11 @@ public class playreControl : MonoBehaviour
         Vector3 pos = transform.localScale;
         if (pos.x == -1)
         {
-            rigidbody2D.velocity = new Vector2(1 * movespeed, rigidbody2D.velocity.y);
+            rigidbody2D.linearVelocity = new Vector2(1 * movespeed, rigidbody2D.linearVelocity.y);
         }
         else if (pos.x == 1)
         {
-            rigidbody2D.velocity = new Vector2(-1 * movespeed, rigidbody2D.velocity.y);
+            rigidbody2D.linearVelocity = new Vector2(-1 * movespeed, rigidbody2D.linearVelocity.y);
         }
         leftcoolTime = coolTime;
     }
